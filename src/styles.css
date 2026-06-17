@@ -1,0 +1,251 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Ilona Clinic — Editorial Design System
+ * Burgundy, beige, cream. Playfair Display + DM Sans.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-burgundy: var(--burgundy);
+  --color-burgundy-foreground: var(--burgundy-foreground);
+  --color-burgundy-deep: var(--burgundy-deep);
+  --color-burgundy-tint: var(--burgundy-tint);
+
+  --color-beige: var(--beige);
+  --color-beige-soft: var(--beige-soft);
+
+  --color-primary: var(--burgundy);
+  --color-primary-foreground: var(--burgundy-foreground);
+  --color-secondary: var(--cream);
+  --color-secondary-foreground: var(--ink);
+  --color-accent: var(--beige);
+  --color-accent-foreground: var(--ink);
+  --color-card: var(--background);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--background);
+  --color-popover-foreground: var(--ink);
+  --color-destructive: oklch(0.55 0.22 25);
+  --color-destructive-foreground: oklch(0.99 0 0);
+
+  --font-display: "Playfair Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Brand palette */
+  --burgundy: #7B1935;
+  --burgundy-deep: #5A0F26;
+  --burgundy-foreground: #FFFFFF;
+  --burgundy-tint: rgba(123, 25, 53, 0.08);
+  --beige: #C9A882;
+  --beige-soft: #E7D9C4;
+
+  --background: #FFFFFF;
+  --cream: #FAF8F5;
+  --foreground: #1A1A1A;
+  --ink: #1A1A1A;
+  --muted: #F4F1EC;
+  --muted-foreground: #6B6660;
+  --border: #ECE6DD;
+  --input: #1A1A1A;
+  --ring: #7B1935;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "kern";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  ::selection {
+    background: var(--burgundy);
+    color: #fff;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--beige);
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+@utility display-md {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+@utility nav-link {
+  position: relative;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  padding-bottom: 2px;
+  transition: color 0.3s ease;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background: var(--burgundy);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  &:hover {
+    color: var(--burgundy);
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  border-radius: 999px;
+  background: var(--burgundy);
+  color: #fff;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.4s ease;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--burgundy-deep);
+    transform: translateY(101%);
+    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+    z-index: -1;
+  }
+  &:hover::before {
+    transform: translateY(0);
+  }
+}
+
+@utility btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.4s ease, color 0.3s ease;
+  &:hover {
+    color: var(--burgundy);
+    border-bottom-color: var(--burgundy);
+  }
+}
+
+@utility input-line {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 0;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s ease;
+  &::placeholder {
+    color: var(--muted-foreground);
+  }
+  &:focus {
+    border-bottom-color: var(--burgundy);
+  }
+}
+
+@utility tint-burgundy {
+  background-color: var(--burgundy-tint);
+}
+
+@keyframes ilona-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+  70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@utility wa-pulse {
+  animation: ilona-pulse 2.2s ease-out infinite;
+}
+
+@keyframes fab-pulse {
+  0% { box-shadow: 0 8px 24px rgba(123, 25, 53, 0.3), 0 0 0 0 rgba(123, 25, 53, 0.35); }
+  70% { box-shadow: 0 8px 24px rgba(123, 25, 53, 0.3), 0 0 0 14px rgba(123, 25, 53, 0); }
+  100% { box-shadow: 0 8px 24px rgba(123, 25, 53, 0.3), 0 0 0 0 rgba(123, 25, 53, 0); }
+}
+
+@utility fab-pulse {
+  animation: fab-pulse 2.4s ease-out infinite;
+}

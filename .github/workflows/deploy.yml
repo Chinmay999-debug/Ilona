@@ -1,0 +1,71 @@
+name: Deploy to GitHub Pages
+
+# Builds the site as static files and publishes them to GitHub Pages on every
+# push to main. No server is needed — the app is prerendered to a client SPA.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; newer pushes cancel in-progress runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      # Project pages are served from /<repo>/, so assets need that prefix.
+      # A user/org site (<owner>.github.io) is served from the root.
+      - name: Compute base path
+        id: base
+        run: |
+          REPO="${GITHUB_REPOSITORY#*/}"
+          OWNER_LC="$(echo "${GITHUB_REPOSITORY%/*}" | tr '[:upper:]' '[:lower:]')"
+          if [ "$REPO" = "$OWNER_LC.github.io" ]; then
+            echo "base=/" >> "$GITHUB_OUTPUT"
+          else
+            echo "base=/$REPO/" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build static site
+        run: npm run build:pages
+        env:
+          VITE_BASE: ${{ steps.base.outputs.base }}
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/client
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
