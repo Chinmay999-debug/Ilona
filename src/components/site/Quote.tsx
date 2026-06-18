@@ -10,7 +10,7 @@ export function Quote() {
       <div className="relative mx-auto max-w-[1100px] px-6 text-center lg:px-12">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.32em] text-beige">
-            The Ilona Promise
+            The <span className="normal-case">ilona</span> Promise
           </p>
         </Reveal>
         <Reveal delay={0.1}>

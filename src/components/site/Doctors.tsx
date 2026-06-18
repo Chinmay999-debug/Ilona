@@ -5,11 +5,11 @@ import { Reveal } from "./Reveal";
 import { Butterfly } from "./Butterfly";
 
 type Doc = {
-  index: string;
   name: string;
   credentials: string;
   tag: string;
   bio: string;
+  interests: string[];
   img: string;
   alt: string;
   phone: string;
@@ -18,24 +18,36 @@ type Doc = {
 
 const doctors: Doc[] = [
   {
-    index: "01",
     name: "Dr. Pournami P",
     credentials: "MBBS · MD (Dermatology)",
     tag: "Clinical & Aesthetic Dermatology",
-    bio: "Dr. Pournami P is a consultant dermatologist who is as thorough as she is easy to talk to. She treats acne and scarring, pigmentation, hair loss and vitiligo (including advanced melanocyte grafting), along with the full range of medical and aesthetic dermatology. Her goal is straightforward: treatment that helps both your skin and your confidence.",
+    bio: "A firm believer that every skin journey is unique, Dr. Pournami P combines her passion for dermatology with a keen eye for detail to provide care that is both thoughtful & transformative.",
+    interests: [
+      "Vitiligo & surgery",
+      "Acne & acne scar management",
+      "Pigmentation disorders",
+      "Hair loss treatment",
+      "Aesthetic dermatology",
+    ],
     img: drPournami,
-    alt: "Portrait of Dr. Pournami P, Dermatologist at Ilona Clinic",
+    alt: "Portrait of Dr. Pournami P, Dermatologist at ilona Clinic",
     phone: "+919901345153",
     phoneDisplay: "+91 99013 45153",
   },
   {
-    index: "02",
     name: "Dr. Kunal Gupta",
     credentials: "MBBS · MD (Internal Medicine) · DM (Endocrinology)",
     tag: "Endocrinology & Metabolic Health",
     bio: "Dr. Kunal Gupta is a DM-qualified endocrinologist with deep experience in diabetes, thyroid disorders, obesity, PCOS, osteoporosis and other complex hormonal conditions. He works with the latest in metabolic medicine, including GIP/GLP-1 receptor agonists, and is known for taking the time to get each patient's treatment right.",
+    interests: [
+      "Diabetes management",
+      "Thyroid disorders",
+      "Obesity & metabolic health",
+      "PCOS & hormonal health",
+      "Bone health & osteoporosis",
+    ],
     img: drKunal,
-    alt: "Portrait of Dr. Kunal Gupta, Endocrinologist at Ilona Clinic",
+    alt: "Portrait of Dr. Kunal Gupta, Endocrinologist at ilona Clinic",
     phone: "+919686629759",
     phoneDisplay: "+91 96866 29759",
   },
@@ -54,15 +66,18 @@ export function Doctors() {
               Our Specialists
             </p>
             <h2 className="display-lg text-ink">
-              Meet the Doctors <br className="hidden lg:block" />
-              <span className="italic text-burgundy">Behind Ilona</span>
+              Know Your <span className="italic text-burgundy">Doctors</span>
             </h2>
+            <p className="mt-5 text-muted-foreground lg:text-lg">
+              Meet the experts behind your journey.
+            </p>
           </Reveal>
           <Reveal className="hidden lg:col-span-5 lg:block" delay={0.1}>
-            <p className="text-muted-foreground lg:text-right lg:text-lg">
-              Two specialists, one standard of care.{" "}
-              <span className="italic text-burgundy">Thorough</span>,
-              evidence-led and never rushed.
+            <p className="font-display text-2xl italic leading-snug text-ink lg:text-right lg:text-[1.75rem]">
+              Expertise You Can{" "}
+              <span className="text-burgundy">Trust</span>.
+              <br />
+              Care You Can <span className="text-burgundy">Feel</span>.
             </p>
           </Reveal>
         </div>
@@ -96,19 +111,19 @@ export function Doctors() {
                         src={doc.img}
                         alt={doc.alt}
                         loading="lazy"
-                        className="h-full w-full object-cover grayscale transition-all duration-[1200ms] hover:grayscale-0 hover:scale-[1.02]"
+                        className="h-full w-full object-cover transition-all duration-[1200ms] hover:scale-[1.02]"
                         width={896}
                         height={1216}
                       />
+                      {/* Doctor details — written vertically on the right side */}
+                      <div className="pointer-events-none absolute inset-y-0 right-0 hidden items-center lg:flex">
+                        <span className="flex items-center gap-3 bg-burgundy/90 px-2.5 py-5 text-[0.7rem] uppercase tracking-[0.28em] text-[#F4E9D8] [writing-mode:vertical-rl]">
+                          {doc.name}
+                          <span className="h-1 w-1 rounded-full bg-beige" />
+                          {doc.tag}
+                        </span>
+                      </div>
                     </div>
-                    {/* Huge serif numeral — desktop only */}
-                    <span
-                      className={`pointer-events-none absolute hidden font-display italic leading-none text-burgundy lg:block lg:text-[12rem] ${
-                        reverse ? "lg:-right-8 lg:-top-20" : "lg:-left-8 lg:-top-20"
-                      }`}
-                    >
-                      {doc.index}
-                    </span>
                   </div>
 
                 </Reveal>
@@ -135,7 +150,23 @@ export function Doctors() {
                       {doc.bio}
                     </p>
                   </Reveal>
-                  <Reveal delay={0.2}>
+                  <Reveal delay={0.18}>
+                    <div className="mt-8 max-w-xl">
+                      <p className="eyebrow mb-4 text-beige">Special Interests</p>
+                      <ul className="grid grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                        {doc.interests.map((it) => (
+                          <li
+                            key={it}
+                            className="flex items-center gap-3 text-sm text-foreground/80"
+                          >
+                            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-burgundy" />
+                            {it}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </Reveal>
+                  <Reveal delay={0.22}>
                     <div className="mt-10 flex flex-wrap items-center gap-4">
                       <a href="#contact" className="btn-primary group">
                         Book a Consultation

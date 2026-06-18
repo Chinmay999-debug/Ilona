@@ -1,4 +1,5 @@
 import heroImg from "@/assets/hero-clinic.jpg";
+import butterfly from "@/assets/butterfly-brand.svg";
 import { Butterfly } from "./Butterfly";
 import { CallChooser } from "./CallChooser";
 
@@ -20,15 +21,14 @@ export function Hero() {
           </div>
 
           <h1 className="display-xl text-ink">
-            Precision care for{" "}
-            <span className="italic text-burgundy">every hormone</span>,
-            every layer of skin.
+            Redefining{" "}
+            <span className="italic text-burgundy">Skin &amp; Hormonal Care</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground lg:text-lg">
-            Ilona Clinic brings specialist endocrinology and expert
-            dermatology under one roof in Indiranagar, Bengaluru, with
-            personal, evidence-based care.
+            Combining specialist dermatology &amp; endocrinology services, ilona
+            offers patient-centered, evidence-based solutions to your health
+            &amp; wellness journey.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
@@ -40,15 +40,27 @@ export function Hero() {
         </div>
 
         <div className="lg:col-span-5">
-          <div className="relative aspect-[4/5] w-full overflow-hidden">
-            <div className="pointer-events-none absolute -left-4 -top-4 h-full w-full border border-beige" />
-            <img
-              src={heroImg}
-              alt="Ilona Clinic interior in Indiranagar, Bengaluru"
-              className="relative h-full w-full object-cover"
-              width={896}
-              height={1120}
-            />
+          <div className="relative">
+            <div className="relative aspect-[4/5] w-full overflow-hidden">
+              <div className="pointer-events-none absolute -left-4 -top-4 h-full w-full border border-beige" />
+              <img
+                src={heroImg}
+                alt="ilona Clinic interior in Indiranagar, Bengaluru"
+                className="relative h-full w-full object-cover"
+                width={896}
+                height={1120}
+              />
+            </div>
+
+            {/* Brand butterfly stamp — the logo mark on an even background */}
+            <div className="absolute -bottom-6 -right-6 grid h-24 w-24 place-items-center rounded-full bg-[#F4E9D8] shadow-xl shadow-burgundy/20 ring-1 ring-burgundy/10 lg:-bottom-8 lg:-right-8 lg:h-32 lg:w-32">
+              <img
+                src={butterfly}
+                alt=""
+                aria-hidden="true"
+                className="h-12 w-12 lg:h-16 lg:w-16"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ export function Footer() {
       <div className="relative mx-auto max-w-[1400px] px-6 py-14 lg:px-12 lg:py-28">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-16">
           <div className="sm:col-span-2 lg:col-span-4">
-            <Wordmark tone="cream" />
+            <Wordmark variant="full" onDark />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-[#E7D9C4]/70">
               Endocrine &amp; Wellness · Skin &amp; Hair · Indiranagar, Bengaluru
             </p>
@@ -86,7 +86,7 @@ export function Footer() {
 
         <div className="mt-20 border-t border-[#E7D9C4]/15 pt-8">
           <p className="text-xs tracking-[0.12em] text-[#E7D9C4]/60">
-            © 2025 Ilona Clinic. All rights reserved.
+            © 2025 ilona Clinic. All rights reserved.
           </p>
         </div>
       </div>

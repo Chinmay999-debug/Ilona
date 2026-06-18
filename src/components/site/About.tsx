@@ -12,7 +12,7 @@ export function About() {
           <div className="relative aspect-[4/5] w-full overflow-hidden lg:aspect-auto lg:h-[78vh]">
             <img
               src={aboutImg}
-              alt="Warm, refined interior at Ilona Clinic"
+              alt="Warm, refined interior at ilona Clinic"
               loading="lazy"
               className="h-full w-full object-cover"
               width={896}
@@ -25,7 +25,9 @@ export function About() {
           <Reveal>
             <p className="eyebrow mb-6 flex items-center gap-3">
               <Butterfly className="h-3 w-4 text-beige" />
-              About Ilona
+              <span>
+                About <span className="normal-case">ilona</span>
+              </span>
             </p>
           </Reveal>
           <Reveal delay={0.1}>
@@ -37,11 +39,10 @@ export function About() {
           <Reveal delay={0.2}>
             <div className="mt-10 space-y-6 text-base leading-relaxed text-muted-foreground lg:text-[1.05rem]">
               <p>
-                At Ilona Clinic, good care starts with listening properly.
-                Under one roof, our two specialties, Skin &amp; Hair and
-                Endocrine &amp; Wellness, cover a broad range of needs, and
-                every patient gets a treatment plan built for them rather than
-                pulled from a template.
+                Every patient has a unique story &amp; every treatment plan
+                should be just as unique. At ilona we listen, understand &amp;
+                create personalized solutions that support balanced hormones,
+                healthy skin &amp; a better quality of life.
               </p>
               <p>
                 We're based in Indiranagar, Bengaluru, where we practise
@@ -55,7 +56,7 @@ export function About() {
               href={CLINIC_MAPS_URL}
               target="_blank"
               rel="noreferrer noopener"
-              aria-label="Open Ilona Clinic location in Google Maps"
+              aria-label="Open ilona Clinic location in Google Maps"
               className="mt-12 inline-flex items-start gap-3 text-sm text-beige transition-colors hover:text-burgundy"
             >
               <MapPin size={16} strokeWidth={1.5} className="mt-0.5 shrink-0" />

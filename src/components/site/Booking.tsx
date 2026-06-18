@@ -109,7 +109,7 @@ export function Booking() {
                 <Butterfly className="pointer-events-none absolute -right-10 -top-12 h-48 w-56 text-[#F4E9D8] opacity-[0.06]" />
 
                 <p className="text-[0.7rem] uppercase tracking-[0.22em] text-beige">
-                  Visit Ilona
+                  Visit <span className="normal-case">ilona</span>
                 </p>
                 <h3 className="mt-3 font-display text-2xl leading-tight text-white lg:text-[1.9rem]">
                   We'd love to see you.
@@ -198,11 +198,11 @@ export function Booking() {
                   href={CLINIC_MAPS_URL}
                   target="_blank"
                   rel="noreferrer noopener"
-                  aria-label="Open Ilona Clinic location in Google Maps"
+                  aria-label="Open ilona Clinic location in Google Maps"
                   className="group relative mt-9 block aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/15"
                 >
                   <iframe
-                    title="Ilona Clinic on Google Maps"
+                    title="ilona Clinic on Google Maps"
                     src={CLINIC_MAPS_EMBED_URL}
                     className="pointer-events-none h-full w-full border-0 grayscale transition-all duration-700 group-hover:grayscale-0"
                     loading="lazy"

@@ -35,7 +35,7 @@ export function Navbar() {
         }`}
       >
         <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-12">
-          <a href="#top" aria-label="Ilona Clinic home">
+          <a href="#top" aria-label="ilona Clinic home">
             <Wordmark />
           </a>
 

@@ -13,13 +13,13 @@ import { FloatingCTAs } from "@/components/site/FloatingCTAs";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ilona Clinic | Endocrinology & Dermatology in Indiranagar, Bengaluru" },
+      { title: "ilona Clinic | Endocrinology & Dermatology in Indiranagar, Bengaluru" },
       {
         name: "description",
         content:
           "Specialist endocrinology and expert dermatology in Indiranagar, Bengaluru. Evidence-based, deeply personal care for hormones, skin and hair.",
       },
-      { property: "og:title", content: "Ilona Clinic | Indiranagar, Bengaluru" },
+      { property: "og:title", content: "ilona Clinic | Indiranagar, Bengaluru" },
       {
         property: "og:description",
         content:

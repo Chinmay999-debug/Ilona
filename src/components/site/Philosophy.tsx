@@ -37,7 +37,7 @@ export function Philosophy() {
           </Reveal>
           <Reveal className="hidden lg:col-span-5 lg:col-start-8 lg:block" delay={0.1}>
             <p className="text-muted-foreground lg:text-lg">
-              Three small commitments that shape every consultation at Ilona,
+              Three small commitments that shape every consultation at ilona,
               from the first question we ask to the last note we write.
             </p>
           </Reveal>
