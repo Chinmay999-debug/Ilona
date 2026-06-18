@@ -23,7 +23,7 @@ export function Wordmark({
   const img = (
     <img
       src={src}
-      alt="ilona — skin & hair clinic"
+      alt="ilona skin & hair clinic"
       className={`w-auto ${onDark ? "h-9" : className || "h-9"}`}
       style={{ aspectRatio: ratio }}
       draggable={false}

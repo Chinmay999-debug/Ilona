@@ -174,7 +174,7 @@ export function Booking() {
                       <p className="mt-1 leading-relaxed text-white">
                         #2285, 14th Main, HAL 2nd Stage,
                         <br />
-                        Indiranagar, Bengaluru – 560 008
+                        Indiranagar, Bengaluru 560 008
                       </p>
                     </div>
                   </li>

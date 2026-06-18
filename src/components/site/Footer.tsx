@@ -69,7 +69,7 @@ export function Footer() {
                   rel="noreferrer noopener"
                   className="transition-colors hover:text-white"
                 >
-                  #2285, 14th Main, HAL 2nd Stage,<br />Indiranagar, Bengaluru – 560 008
+                  #2285, 14th Main, HAL 2nd Stage,<br />Indiranagar, Bengaluru 560 008
                 </a>
               </li>
               {DOCTOR_CONTACTS.map((d) => (

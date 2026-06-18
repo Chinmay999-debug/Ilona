@@ -61,7 +61,7 @@ export function About() {
             >
               <MapPin size={16} strokeWidth={1.5} className="mt-0.5 shrink-0" />
               <span className="leading-relaxed">
-                #2285, 14th Main, HAL 2nd Stage, Indiranagar, Bengaluru – 560 008
+                #2285, 14th Main, HAL 2nd Stage, Indiranagar, Bengaluru 560 008
               </span>
             </a>
           </Reveal>

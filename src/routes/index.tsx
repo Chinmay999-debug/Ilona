@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { About } from "@/components/site/About";
+import { NameMeaning } from "@/components/site/NameMeaning";
 import { Philosophy } from "@/components/site/Philosophy";
 import { Doctors } from "@/components/site/Doctors";
 import { Services } from "@/components/site/Services";
@@ -36,6 +37,7 @@ function IlonaHome() {
       <Navbar />
       <Hero />
       <About />
+      <NameMeaning />
       <Philosophy />
       <Doctors />
       <Services />
