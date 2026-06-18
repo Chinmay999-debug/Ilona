@@ -23,7 +23,7 @@ const doctors: Doc[] = [
     tag: "Clinical & Aesthetic Dermatology",
     bio: "A firm believer that every skin journey is unique, Dr. Pournami P combines her passion for dermatology with a keen eye for detail to provide care that is both thoughtful & transformative.",
     interests: [
-      "Vitiligo & surgery",
+      "Vitiligo treatment & surgery",
       "Acne & acne scar management",
       "Pigmentation disorders",
       "Hair loss treatment",

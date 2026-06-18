@@ -2,7 +2,7 @@ import { Reveal } from "./Reveal";
 import { Butterfly } from "./Butterfly";
 
 /**
- * "The Meaning Behind the Name" — the origin of the name ilona
+ * "Meaning behind ilona" — the origin of the name ilona
  * (Greek & Hungarian for "light"/"radiance"), presented as a brand statement.
  */
 export function NameMeaning() {
@@ -16,7 +16,7 @@ export function NameMeaning() {
           <Reveal className="lg:col-span-6">
             <p className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.28em] text-beige">
               <Butterfly className="h-3 w-4 text-beige" />
-              The Meaning Behind the Name
+              Meaning behind ilona
             </p>
             <h2 className="mt-7 font-display text-4xl leading-[1.12] text-white sm:text-5xl lg:text-[3.75rem]">
               A name that means{" "}
@@ -26,11 +26,17 @@ export function NameMeaning() {
           </Reveal>
           <Reveal className="lg:col-span-6" delay={0.1}>
             <p className="text-lg leading-relaxed text-[#F4E9D8]/85 lg:text-xl">
-              <span className="font-medium text-white">ilona</span> has roots in
-              both Greek and Hungarian. It perfectly embodies the clinic's
-              mission: to illuminate beauty, restore confidence and enhance
-              natural aesthetics, helping every client shine with a newfound
-              radiance and bringing out their true beauty.
+              The name <span className="font-medium text-white">ilona</span> has
+              roots in both Greek and Hungarian cultures, meaning{" "}
+              <span className="italic text-beige">light</span> and{" "}
+              <span className="italic text-beige">radiance</span>. It resonates
+              with the philosophy and soul of the clinic, with the belief that
+              true wellness shines from within.
+            </p>
+            <p className="mt-5 text-lg leading-relaxed text-[#F4E9D8]/85 lg:text-xl">
+              The name reflects our commitment to helping every patient move
+              toward better health, renewed confidence and a better quality of
+              life.
             </p>
           </Reveal>
         </div>
