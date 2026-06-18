@@ -86,7 +86,7 @@ export function Footer() {
 
         <div className="mt-20 border-t border-[#E7D9C4]/15 pt-8">
           <p className="text-xs tracking-[0.12em] text-[#E7D9C4]/60">
-            © 2025 ilona Clinic. All rights reserved.
+            © 2026 ilona Clinic. All rights reserved.
           </p>
         </div>
       </div>
