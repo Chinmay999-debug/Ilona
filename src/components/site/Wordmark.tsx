@@ -1,15 +1,18 @@
-import logoMark from "@/assets/logo-ilona-mark.svg";
+import logoMark from "@/assets/logo-ilona-mark.png";
 
 /**
  * Official ilona logo.
- * - `variant="mark"`  → wordmark + butterfly only (compact).
- * - `variant="full"`  → adds the "Speciality Clinic" tagline.
- * - `onDark`          → wraps the lockup in a light card so the burgundy wordmark
- *                       reads on dark sections.
  *
- * The tagline is rendered as live text (not baked into the artwork): scaled down to
- * navbar/footer size the vector tagline becomes a ~2px illegible smudge, so we draw
- * the wordmark+butterfly from the SVG and set the tagline in DM Sans copper beneath it.
+ * The wordmark + butterfly are the client's exact logo artwork
+ * (`logo-ilona-mark.png`). The "Speciality Clinic" tagline is set as crisp live
+ * text beneath it — a tagline baked into the artwork shrinks to an illegible
+ * smudge at navbar/footer size — styled copper with flanking rules to match the
+ * logo lockup.
+ *
+ * - `variant="full"` → wordmark + tagline (navbar, footer).
+ * - `variant="mark"` → wordmark only (compact menu).
+ * - `onDark`         → light card so the burgundy logo reads on dark sections
+ *                      (the footer is near-black). The artwork is never altered.
  */
 export function Wordmark({
   variant = "mark",
@@ -20,11 +23,11 @@ export function Wordmark({
   onDark?: boolean;
   className?: string;
 }) {
-  const img = (
+  const mark = (
     <img
       src={logoMark}
       alt="ilona speciality clinic"
-      className={`w-auto ${variant === "full" ? "h-11" : "h-9"}`}
+      className={`w-auto ${variant === "full" ? "h-9" : "h-8"}`}
       draggable={false}
     />
   );
@@ -32,20 +35,17 @@ export function Wordmark({
   const lockup =
     variant === "full" ? (
       <span className="inline-flex flex-col items-center">
-        {img}
-        <span
-          className="mt-[3px] flex w-full items-center gap-[5px]"
-          aria-hidden="true"
-        >
-          <span className="h-px flex-1 bg-beige/70" />
-          <span className="whitespace-nowrap font-sans text-[7px] font-medium uppercase leading-none tracking-[0.16em] text-beige">
+        {mark}
+        <span className="mt-1 flex w-full items-center gap-[2px]" aria-hidden="true">
+          <span className="h-px flex-1 bg-beige" />
+          <span className="whitespace-nowrap font-sans text-[5px] font-medium uppercase leading-none tracking-[0.08em] text-beige">
             Speciality Clinic
           </span>
-          <span className="h-px flex-1 bg-beige/70" />
+          <span className="h-px flex-1 bg-beige" />
         </span>
       </span>
     ) : (
-      img
+      mark
     );
 
   if (onDark) {
@@ -58,5 +58,5 @@ export function Wordmark({
     );
   }
 
-  return lockup;
+  return className ? <span className={className}>{lockup}</span> : lockup;
 }

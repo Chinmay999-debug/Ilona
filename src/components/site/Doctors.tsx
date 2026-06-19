@@ -66,11 +66,9 @@ export function Doctors() {
               Our Specialists
             </p>
             <h2 className="display-lg text-ink">
-              Know Your <span className="italic text-burgundy">Doctors</span>
+              Meet the <span className="italic text-burgundy">experts</span> behind
+              your journey.
             </h2>
-            <p className="mt-5 text-muted-foreground lg:text-lg">
-              Meet the experts behind your journey.
-            </p>
           </Reveal>
           <Reveal className="hidden lg:col-span-5 lg:block" delay={0.1}>
             <p className="font-display text-2xl italic leading-snug text-ink lg:text-right lg:text-[1.75rem]">
