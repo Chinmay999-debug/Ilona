@@ -4,8 +4,8 @@
  * A bespoke, dependency-free animated panel that unifies ilona's two
  * specialties inside one quiet, premium composition:
  *
- *   • a luminous line-art butterfly — the emblem of transformation & renewal —
- *     as the single focal point (burgundy, the darkest mark on the panel);
+ *   • the ilona logo butterfly (full colour mark, side profile) — wings, mauve
+ *     panels & eyespots intact — as the single luminous focal point;
  *   • a faint hexagonal skin-cell network behind it  → dermatology;
  *   • flowing copper signalling pathways with molecule nodes → endocrinology;
  *   • graceful botanical sprigs framing the base;
@@ -20,8 +20,8 @@
  * Palette is brand-locked: burgundy #66172D, copper #B07B43, gold #C49A6C,
  * mauve #B79480 — over a warm cream→gold gradient.
  */
+import { BRAND_BUTTERFLY_MARK } from "./butterfly-geometry";
 
-const BURGUNDY = "#66172D";
 const COPPER = "#B07B43";
 const GOLD = "#C49A6C";
 const MAUVE = "#B79480";
@@ -79,79 +79,9 @@ const MOTES = [
   { x: 280, y: 340, r: 1.3, dur: 10.5, delay: 4.8 },
 ];
 
-/* The right half of the butterfly (mirrored to form the left). Body axis x=220. */
-const FOREWING =
-  "M224 174 C250 118 302 104 334 130 C356 148 350 185 320 199 C294 211 246 204 226 196 Z";
-const HINDWING =
-  "M226 200 C266 206 300 222 306 252 C310 281 285 301 259 294 C241 289 224 272 224 248 C224 230 222 214 226 200 Z";
-const VEINS = [
-  "M232 192 C266 176 300 154 324 134",
-  "M234 196 C264 190 294 182 318 172",
-  "M230 246 C262 252 288 266 302 285",
-  "M232 256 C256 264 278 278 290 295",
-];
-
-/** One butterfly wing (forewing + hindwing + veins + eyespots), reused mirrored. */
-const Wing = (
-  <>
-    {/* Luminous translucent wash — brighter near the body, fading to the tips */}
-    <path className="hv-spot" style={{ animationDelay: "2.4s" }} fill="url(#hvWing)" d={FOREWING} />
-    <path className="hv-spot" style={{ animationDelay: "2.5s" }} fill="url(#hvWing)" d={HINDWING} />
-    {/* Drawn outlines */}
-    <path
-      className="hv-draw"
-      pathLength={1}
-      style={{ animationDelay: "1.65s" }}
-      stroke={BURGUNDY}
-      strokeWidth={2}
-      d={FOREWING}
-    />
-    <path
-      className="hv-draw"
-      pathLength={1}
-      style={{ animationDelay: "1.8s" }}
-      stroke={BURGUNDY}
-      strokeWidth={2}
-      d={HINDWING}
-    />
-    {VEINS.map((d, i) => (
-      <path
-        key={d}
-        className="hv-draw"
-        pathLength={1}
-        style={{ animationDelay: `${2.05 + i * 0.08}s` }}
-        stroke={COPPER}
-        strokeWidth={1}
-        opacity={0.75}
-        d={d}
-      />
-    ))}
-    <circle
-      className="hv-spot"
-      style={{ animationDelay: "2.5s" }}
-      cx={300}
-      cy={152}
-      r={4.5}
-      fill={GOLD}
-    />
-    <circle
-      className="hv-spot"
-      style={{ animationDelay: "2.55s" }}
-      cx={300}
-      cy={152}
-      r={1.8}
-      fill={BURGUNDY}
-    />
-    <circle
-      className="hv-spot"
-      style={{ animationDelay: "2.6s" }}
-      cx={286}
-      cy={262}
-      r={3}
-      fill={COPPER}
-    />
-  </>
-);
+/* Places the logo butterfly (mark bbox centre ≈ 559.565,237.97) into the
+   panel's 0–440 × 0–550 space: centred at (220,198), scaled ~2×. */
+const BUTTERFLY_TRANSFORM = "translate(220 198) scale(2) translate(-559.565 -237.97)";
 
 export function HeroVisual() {
   return (
@@ -174,17 +104,16 @@ export function HeroVisual() {
         .hv-flow{stroke-dasharray:3 12;stroke-dashoffset:0;opacity:0;
           animation:hvFlowIn 1.2s ease forwards,hvFlow 7s linear infinite;}
 
-        /* The butterfly lives, then breathes */
-        .hv-bfly{transform-box:fill-box;transform-origin:50% 46%;animation:hvFloat 9s ease-in-out 3s infinite;}
-        .hv-wing{transform-box:fill-box;transform-origin:left center;animation:hvFlutter 6s ease-in-out 3s infinite;}
+        /* The butterfly settles into light, then drifts as if mid-flight */
+        .hv-bfly{opacity:0;transform-box:fill-box;transform-origin:50% 56%;
+          animation:hvFade 1.4s ease 1.9s forwards,hvFloat 9s ease-in-out 3.1s infinite;}
         .hv-mote{opacity:0;animation:hvDrift var(--d,9s) ease-in-out var(--t,3s) infinite;}
 
         @keyframes hvDraw{to{stroke-dashoffset:0;}}
         @keyframes hvFade{to{opacity:1;}}
         @keyframes hvFlowIn{to{opacity:.85;}}
         @keyframes hvFlow{to{stroke-dashoffset:-150;}}
-        @keyframes hvFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-7px) scale(1.012);}}
-        @keyframes hvFlutter{0%,100%{transform:scaleX(1);}50%{transform:scaleX(.9);}}
+        @keyframes hvFloat{0%,100%{transform:translateY(0) rotate(0deg) scale(1);}50%{transform:translateY(-8px) rotate(-2deg) scale(1.015);}}
         @keyframes hvHalo{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06);}}
         @keyframes hvTwinkle{0%,100%{opacity:.35;}50%{opacity:.85;}}
         @keyframes hvDrift{
@@ -197,7 +126,7 @@ export function HeroVisual() {
         @media (prefers-reduced-motion: reduce){
           .hv *{animation:none !important;}
           .hv-draw{stroke-dashoffset:0 !important;}
-          .hv-cells,.hv-spot,.hv-node{opacity:1 !important;}
+          .hv-cells,.hv-spot,.hv-node,.hv-bfly{opacity:1 !important;}
           .hv-flow{opacity:.7 !important;}
           .hv-mote{opacity:.5 !important;transform:none !important;}
         }
@@ -215,10 +144,10 @@ export function HeroVisual() {
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
-          <radialGradient id="hvWing" gradientUnits="userSpaceOnUse" cx={220} cy={202} r={140}>
-            <stop offset="0%" stopColor={GOLD} stopOpacity={0.34} />
-            <stop offset="55%" stopColor={GOLD} stopOpacity={0.13} />
-            <stop offset="100%" stopColor={GOLD} stopOpacity={0} />
+          <radialGradient id="hvLight" gradientUnits="userSpaceOnUse" cx={216} cy={196} r={132}>
+            <stop offset="0%" stopColor="#FFFCF7" stopOpacity={0.72} />
+            <stop offset="55%" stopColor="#FFFCF7" stopOpacity={0.28} />
+            <stop offset="100%" stopColor="#FFFCF7" stopOpacity={0} />
           </radialGradient>
         </defs>
 
@@ -348,64 +277,23 @@ export function HeroVisual() {
           />
         </g>
 
-        {/* The butterfly — focal transformation */}
-        <g className="hv-bfly">
-          <g className="hv-wing">{Wing}</g>
-          <g transform="translate(440,0) scale(-1,1)">
-            <g className="hv-wing">{Wing}</g>
-          </g>
+        {/* Soft light the butterfly rests on — lets the logo's cream wings read */}
+        <ellipse
+          className="hv-spot"
+          style={{ animationDelay: "1.5s" }}
+          cx={216}
+          cy={196}
+          rx={120}
+          ry={120}
+          fill="url(#hvLight)"
+        />
 
-          {/* Body, head & antennae (centred — do not flutter) */}
-          <g>
-            <path
-              className="hv-draw"
-              pathLength={1}
-              style={{ animationDelay: "1.55s" }}
-              stroke={BURGUNDY}
-              strokeWidth={2}
-              fill={BURGUNDY}
-              d="M220 156 C225 168 226 202 223 240 C222 260 221 282 220 298 C219 282 218 260 217 240 C214 202 215 168 220 156 Z"
-            />
-            <circle
-              cx={220}
-              cy={150}
-              r={6}
-              fill={BURGUNDY}
-              className="hv-spot"
-              style={{ animationDelay: "1.5s" }}
-            />
-            <path
-              className="hv-draw"
-              pathLength={1}
-              style={{ animationDelay: "2.35s" }}
-              stroke={BURGUNDY}
-              strokeWidth={1.6}
-              d="M222 147 C234 128 250 117 263 113"
-            />
-            <path
-              className="hv-draw"
-              pathLength={1}
-              style={{ animationDelay: "2.35s" }}
-              stroke={BURGUNDY}
-              strokeWidth={1.6}
-              d="M218 147 C206 128 190 117 177 113"
-            />
-            <circle
-              className="hv-spot"
-              style={{ animationDelay: "2.7s" }}
-              cx={263}
-              cy={113}
-              r={2.6}
-              fill={BURGUNDY}
-            />
-            <circle
-              className="hv-spot"
-              style={{ animationDelay: "2.7s" }}
-              cx={177}
-              cy={113}
-              r={2.6}
-              fill={BURGUNDY}
-            />
+        {/* The ilona logo butterfly (full colour mark, side profile) — focal point */}
+        <g className="hv-bfly">
+          <g transform={BUTTERFLY_TRANSFORM}>
+            {BRAND_BUTTERFLY_MARK.map((p) => (
+              <path key={p.d} d={p.d} fill={p.fill} />
+            ))}
           </g>
         </g>
 
