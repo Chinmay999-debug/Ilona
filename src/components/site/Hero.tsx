@@ -1,7 +1,20 @@
-import heroImg from "@/assets/hero-clinic.jpg";
-import butterfly from "@/assets/butterfly-brand.svg";
+import { Activity, ArrowUpRight, Sparkles } from "lucide-react";
 import { Butterfly } from "./Butterfly";
 import { CallChooser } from "./CallChooser";
+import { HeroVisual } from "./HeroVisual";
+
+const specialties = [
+  {
+    title: "Endocrine & Wellness",
+    items: "Thyroid · Diabetes · Hormonal health",
+    icon: Activity,
+  },
+  {
+    title: "Skin & Hair",
+    items: "Acne · Pigmentation · Hair restoration",
+    icon: Sparkles,
+  },
+];
 
 export function Hero() {
   return (
@@ -41,25 +54,36 @@ export function Hero() {
 
         <div className="lg:col-span-5">
           <div className="relative">
-            <div className="relative aspect-[4/5] w-full overflow-hidden">
-              <div className="pointer-events-none absolute -left-4 -top-4 h-full w-full border border-beige" />
-              <img
-                src={heroImg}
-                alt="ilona Clinic interior in Indiranagar, Bengaluru"
-                className="relative h-full w-full object-cover"
-                width={896}
-                height={1120}
-              />
-            </div>
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 -translate-x-4 -translate-y-4 rounded-[20px] border border-beige"
+            />
+            <HeroVisual />
 
-            {/* Brand butterfly stamp — the logo mark on an even background */}
-            <div className="absolute -bottom-6 -right-6 grid h-24 w-24 place-items-center rounded-full bg-[#F4E9D8] shadow-xl shadow-burgundy/20 ring-1 ring-burgundy/10 lg:-bottom-8 lg:-right-8 lg:h-32 lg:w-32">
-              <img
-                src={butterfly}
-                alt=""
-                aria-hidden="true"
-                className="h-12 w-12 lg:h-16 lg:w-16"
-              />
+            <div className="absolute inset-x-4 bottom-4 flex flex-col gap-2.5">
+              {specialties.map((s) => (
+                <a
+                  key={s.title}
+                  href="#services"
+                  className="group flex items-center gap-3 rounded-2xl bg-cream/80 px-4 py-3 ring-1 ring-burgundy/10 backdrop-blur-md transition-colors hover:bg-cream"
+                >
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-burgundy/[0.08] text-burgundy">
+                    <s.icon className="h-5 w-5" strokeWidth={1.6} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block font-display text-[15px] leading-tight text-burgundy">
+                      {s.title}
+                    </span>
+                    <span className="block text-[11px] leading-tight text-ink/55">
+                      {s.items}
+                    </span>
+                  </span>
+                  <ArrowUpRight
+                    className="ml-auto h-4 w-4 shrink-0 text-burgundy/40 transition group-hover:text-burgundy"
+                    strokeWidth={1.6}
+                  />
+                </a>
+              ))}
             </div>
           </div>
         </div>
