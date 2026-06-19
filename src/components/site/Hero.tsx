@@ -5,14 +5,14 @@ import { HeroVisual } from "./HeroVisual";
 
 const specialties = [
   {
-    title: "Endocrine & Wellness",
-    items: "Thyroid · Diabetes · Hormonal health",
-    icon: Activity,
-  },
-  {
     title: "Skin & Hair",
     items: "Acne · Pigmentation · Hair restoration",
     icon: Sparkles,
+  },
+  {
+    title: "Endocrine & Wellness",
+    items: "Thyroid · Diabetes · Hormonal health",
+    icon: Activity,
   },
 ];
 
